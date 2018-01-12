@@ -32,7 +32,7 @@ You can use file name, or already opened (in binary mode) file:
 
     fh = open('simple.dbf', 'rb')
     dbf = ydbf.open(fh)
-    
+
     for record in dbf:
         ...
 
@@ -98,7 +98,9 @@ try:
         VERSION = 'unknown'
 except ImportError:
     VERSION = 'N/A'
-    
+
+import six
+
 from ydbf.reader import YDbfReader
 from ydbf.writer import YDbfWriter
 
@@ -107,32 +109,34 @@ FILE_MODES = {
     'w': YDbfWriter,
 }
 
+
 def open(dbf_file, mode='r', *args, **kwargs):
     """
     Open DBF for reading or writing
-    
+
     Args:
         `dbf_file`:
             file name or file-like object
-        
+
         `mode`:
             'r' for reading, 'w' for writing
-        
+
         `fields`:
             fields structure of DBF file, most
             useful for writing mode, defined as
             [(NAME, TYP, SIZE, DEC), ...]
-        
+
         `use_unicode`:
             Use unicode for string data, True by default
-        
+
         `encoding`:
             Set encoding of DBF file, most
             useful for writing mode.
     """
     if mode not in FILE_MODES:
         raise ValueError("Wrong mode %s for ydbf.open" % mode)
-    if isinstance(dbf_file, basestring):
-        dbf_file = file(dbf_file, '%sb' % mode)
+
+    if isinstance(dbf_file, six.string_types):
+        dbf_file = open(dbf_file, '%sb' % mode)
     dbf_class = FILE_MODES[mode]
     return dbf_class(dbf_file, *args, **kwargs)

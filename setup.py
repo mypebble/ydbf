@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os import path
 
-version = '0.4'
+version = '0.5'
 
 README_PATH = path.join(path.dirname(path.abspath(__file__)), 'README.md')
 try:
@@ -34,7 +34,8 @@ each record is a simple dict.
       author_email='s@cott.me.uk',
       url='http://www.pyobject.ru/projects/YDbf',
       license='GNU GPL2',
-      packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
+      packages=find_packages(exclude=['ez_setup', 'examples', 'tests',
+                                      'venv']),
       include_package_data=True,
       zip_safe=True,
       install_requires=[
