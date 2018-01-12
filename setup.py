@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os import path
 
-version = '0.5'
+version = '0.6'
 
 README_PATH = path.join(path.dirname(path.abspath(__file__)), 'README.md')
 try:
@@ -25,6 +25,7 @@ each record is a simple dict.
           'License :: OSI Approved :: GNU General Public License (GPL)',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
+          'Programming Language :: Python :: 2.7',
           'Programming Language :: Python :: 3.5',
           'Topic :: Database',
           'Topic :: Software Development :: Libraries :: Python Modules',
