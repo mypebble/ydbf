@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from os import path
 
-version = '0.6'
+version = '0.7'
 
 README_PATH = path.join(path.dirname(path.abspath(__file__)), 'README.md')
 try:
@@ -13,12 +13,7 @@ except Exception:
 setup(name='ydbf-py3',
       version=version,
       description="Pythonic reader and writer for DBF/XBase files",
-      long_description="""\
-YDbf is a library for reading/writing DBF files
-(also known as XBase) in pythonic way. It
-represents DBF file as data iterator, where
-each record is a simple dict.
-.""",
+      long_description=LONG_DESCRIPTION,
       classifiers=[
           'Development Status :: 4 - Beta',
           'Intended Audience :: Developers',
